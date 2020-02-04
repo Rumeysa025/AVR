@@ -61,22 +61,24 @@ PATTERN_STRUCT pattern[] = {
 
 int main(void)
 {
-		DDRD = 0b11111111;					// PORTD all output
+	
+	
+	DDRD = 0b11111111;					// PORTD all output
 		
-		while (1)
-		{
-			// Set index to begin of pattern array
-			int index = 0;
-			// as long as delay has meaningful content
-			while( pattern[index].delay != 0 ) {
-				// Write data to PORTD
-				PORTD = pattern[index].data;
-				// wait
-				wait(pattern[index].delay);
-				// increment for next round
-				index++;
-			}
+	while (1)
+	{
+		// Set index to begin of pattern array
+		int index = 0;
+		// as long as delay has meaningful content
+		while( pattern[index].delay != 0 ) {
+			// Write data to PORTD
+			PORTD = pattern[index].data;
+			// wait
+			wait(pattern[index].delay);
+			// increment for next round
+			index++;
 		}
+	}
 
 	
 	/* 
