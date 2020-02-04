@@ -61,8 +61,42 @@ PATTERN_STRUCT pattern[] = {
 
 int main(void)
 {
+	/* Part B6 */
+	typedef enum {OFF = 0, SLOW = 1, FAST = 2} STATES;
+	DDRC = 0x00;
+	DDRD = 0xff;
+	STATES switch1 = OFF;
+	while(1)
+	{
+		if(PINC & 0x01)
+		{
+			switch1 = (switch1 + 1) % 3;
+			
+		}
+		
+		switch(switch1)
+		{
+			case OFF:
+			PORTD = 0x00;
+			break;
+			case SLOW:
+			PORTD = 0x80;
+			wait(500);
+			PORTD = 0x00;
+			wait(500);
+			break;
+			case FAST:
+			PORTD = 0x80;
+			wait(200);
+			PORTD = 0x00;
+			wait(200);
+			break;
+		}
+		
+	}
 	
-	
+	/*
+	---- Part B5 ----
 	DDRD = 0b11111111;					// PORTD all output
 		
 	while (1)
@@ -80,8 +114,6 @@ int main(void)
 		}
 	}
 
-	
-	/* 
 	---- Part B4 ----
 	DDRE = 0xff;
 	int i = 0;
