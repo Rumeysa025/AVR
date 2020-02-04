@@ -40,6 +40,16 @@ void ButtonC0Pressed()
 
 int main(void)
 {
+	/* Part B4 */
+	DDRE = 0xff;
+	int i = 0;
+	while(1)
+	{
+		PORTE = 1 << i;
+		i = (i+1)% 8;
+		wait(50);
+	}
+	
 	/* Part B3 */
 	ButtonC0Pressed();
 	
