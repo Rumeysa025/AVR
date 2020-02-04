@@ -22,8 +22,27 @@ Version :    	DMK, Initial code
 
 /******************************************************************/
 
+void ButtonC0Pressed()
+{
+	DDRD = 0b11111111;			// All pins PORTD are set to output
+	while (1)
+	{
+		if (PINC & 0x01)
+		{
+			PORTD = 0x80;
+			wait(250);
+		}
+		
+		PORTD = 0x00;
+		wait(250);
+	}
+}
+
 int main(void)
 {
+	/* Part B3 */
+	ButtonC0Pressed();
+	
 	/* Part B2 */
 	DDRD = 0b11111111;			// All pins PORTD are set to output
 	DDRC = 0xff;
